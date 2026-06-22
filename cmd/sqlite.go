@@ -40,8 +40,9 @@ func NewSql3Db(filename string) (*Sql3Db, error) {
 func (s *Sql3Db) Close() error {
 	err := s.db.Close()
 	if err != nil {
-		fmt.Printf("ERROR: unable to close DB: %v", err)
+		return fmt.Errorf("unable to close DB: %v", err)
 	}
+	return nil
 }
 
 func (s *Sql3Db) WriteResult(result Result) error {
